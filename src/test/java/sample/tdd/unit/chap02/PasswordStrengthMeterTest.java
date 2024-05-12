@@ -1,5 +1,6 @@
 package sample.tdd.unit.chap02;
 
+import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -56,6 +57,12 @@ public class PasswordStrengthMeterTest {
     @Test
     void nullInput_Then_Invalid() {
         assertStrength(null, PasswordStrength.INVALID);
+    }
+
+    @DisplayName("Empty을 입력하는 경우")
+    @Test
+    void emptyInput_Then_Invalid() {
+        assertStrength(Strings.EMPTY, PasswordStrength.INVALID);
     }
 
     @DisplayName("대문자를 포함하지 않고 나머지 조건을 충족하는 경우")
