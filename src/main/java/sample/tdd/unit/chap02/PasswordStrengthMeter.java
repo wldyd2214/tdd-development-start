@@ -24,7 +24,6 @@ public class PasswordStrengthMeter {
     }
 
     private boolean meetsContainingNumberCriteria(String s) {
-        // 넘겨오는 인자의 null 체크가 필요한지
         for (char ch : s.toCharArray()) {
             if (ch >= '0' && ch <= '9') {
                 return true;
@@ -34,7 +33,6 @@ public class PasswordStrengthMeter {
     }
 
     private boolean meetsContainingUppercaseCriteria(String s) {
-        // 넘겨오는 인자의 null 체크가 필요한지
         for (char ch : s.toCharArray()) {
             if (Character.isUpperCase(ch)) {
                 return true;
