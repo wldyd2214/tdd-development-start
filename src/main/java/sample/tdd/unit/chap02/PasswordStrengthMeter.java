@@ -4,8 +4,8 @@ import org.apache.logging.log4j.util.Strings;
 
 public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {
-//        if(s == null || s.isEmpty()) return PasswordStrength.INVALID;
-        if(Strings.isEmpty(s)) return PasswordStrength.INVALID; // 리팩토링
+        //if(s == null || s.isEmpty()) return PasswordStrength.INVALID;
+        if(Strings.isBlank(s)) return PasswordStrength.INVALID; // 리팩토링
 
         int metCounts = getMetCriteriaCounts(s);
 
