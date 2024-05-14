@@ -59,10 +59,16 @@ public class PasswordStrengthMeterTest {
         assertStrength(null, PasswordStrength.INVALID);
     }
 
-    @DisplayName("Empty을 입력하는 경우")
+    @DisplayName("Empty를 입력하는 경우")
     @Test
     void emptyInput_Then_Invalid() {
         assertStrength(Strings.EMPTY, PasswordStrength.INVALID);
+    }
+
+    @DisplayName("Blank를 입력하는 경우")
+    @Test
+    void blankInput_Then_Invalid() {
+        assertStrength(" ", PasswordStrength.INVALID);
     }
 
     @DisplayName("대문자를 포함하지 않고 나머지 조건을 충족하는 경우")
