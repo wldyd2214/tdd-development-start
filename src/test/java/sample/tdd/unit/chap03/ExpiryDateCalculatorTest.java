@@ -142,7 +142,37 @@ public class ExpiryDateCalculatorTest {
 
     // 추가 테스트 케이스 작성 필요
     // 2020, 2, 29 윤달 마지막 날에 10만원을 납부하는 상황
+    @DisplayName("윤달 마지막 날에 10만원 납부")
+    @Test
+    void 윤달_마지막_날에_10만원_납부() {
+        assertExpiryDate(
+                PayData.builder()
+                       .billingDate(LocalDate.of(2020, 2, 29))
+                       .payAmount(100_000)
+                       .build(),
+                LocalDate.of(2021, 2, 28)
+        );
+    }
+
     // 13만원을 납부하는 상황 1년 3개월 뒤에 만료일이 되어야하는 경우
+    @DisplayName("13만원을 납부하는 상황")
+    @Test
+    void 십삼만원을_납부하는_상황() {
+        assertExpiryDate(
+                PayData.builder()
+                       .billingDate(LocalDate.of(2024, 5, 19))
+                       .payAmount(130_000)
+                       .build(),
+                LocalDate.of(2025, 8, 19)
+        );
+        assertExpiryDate(
+                PayData.builder()
+                       .billingDate(LocalDate.of(2020, 2, 29))
+                       .payAmount(140_000)
+                       .build(),
+                LocalDate.of(2021, 6, 29)
+        );
+    }
 
     private void assertExpiryDate(PayData payData, LocalDate expectedExpiryDate) {
         ExpiryDateCalculator cal = new ExpiryDateCalculator();
