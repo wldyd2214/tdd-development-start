@@ -1,12 +1,20 @@
 package sample.tdd.unit.chap05;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class LifecycleTest {
     public LifecycleTest(){
         System.out.println("new LifecycleTest");
+    }
+
+    @BeforeAll
+    static void beforeAll(){
+        System.out.println("beforeAll");
+    }
+
+    @AfterAll
+    static void afterAll(){
+        System.out.println("afterAll");
     }
 
     @BeforeEach
@@ -14,7 +22,12 @@ public class LifecycleTest {
         System.out.println("setUp");
     }
 
-    @Test
+    @AfterEach
+    void tearDown() {
+        System.out.println("tearDown");
+    }
+
+    @Disabled
     void a() {
         System.out.println("A");
     }
@@ -22,10 +35,5 @@ public class LifecycleTest {
     @Test
     void b() {
         System.out.println("B");
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.out.println("tearDown");
     }
 }
